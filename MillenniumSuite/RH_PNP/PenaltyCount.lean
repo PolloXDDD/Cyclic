@@ -63,10 +63,10 @@ theorem unsatisfiedClauseCount_le_length {n : Nat}
       simp [unsatisfiedClauseCount]
   | cons C F ih =>
       by_cases hzero : clausePenalty a C = 0
-      · simp only [unsatisfiedClauseCount, hzero, List.length_cons]
-        omega
-      · simp only [unsatisfiedClauseCount, hzero, List.length_cons]
-        omega
+      · simp [unsatisfiedClauseCount, hzero]
+        exact Nat.le_succ_of_le ih
+      · simp [unsatisfiedClauseCount, hzero]
+        exact Nat.succ_le_succ ih
 
 /-- An assignment satisfies the formula iff its exact unsatisfied-clause count is zero. -/
 theorem formulaSatisfied_iff_unsatisfiedClauseCount_eq_zero {n : Nat}
