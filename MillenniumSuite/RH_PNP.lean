@@ -1,6 +1,7 @@
 import MillenniumSuite.RH_PNP.ProblemStatement
 import MillenniumSuite.RH_PNP.Construction
 import MillenniumSuite.RH_PNP.Theorem
+import MillenniumSuite.RH_PNP.PenaltyCount
 import MillenniumSuite.RH_PNP.ComplexityStatement
 import MillenniumSuite.RH_PNP.ComplexityBasic
 import MillenniumSuite.RH_PNP.GUEKernel
