@@ -52,7 +52,7 @@ theorem formulaPenalty_eq_unsatisfiedClauseCount {n : Nat}
       · simp [formulaPenalty, unsatisfiedClauseCount, hzero, ih]
       · have hone : clausePenalty a C = 1 :=
           (clausePenalty_zero_or_one a C).resolve_left hzero
-        simp [formulaPenalty, unsatisfiedClauseCount, hzero, hone, ih]
+        simp [formulaPenalty, unsatisfiedClauseCount, hone, ih]
 
 /-- The exact count never exceeds the number of clauses. -/
 theorem unsatisfiedClauseCount_le_length {n : Nat}
@@ -63,8 +63,10 @@ theorem unsatisfiedClauseCount_le_length {n : Nat}
       simp [unsatisfiedClauseCount]
   | cons C F ih =>
       by_cases hzero : clausePenalty a C = 0
-      · simp [unsatisfiedClauseCount, hzero, ih]
-      · simp [unsatisfiedClauseCount, hzero, ih]
+      · simp only [unsatisfiedClauseCount, hzero, if_pos, List.length_cons]
+        exact ih.trans (Nat.le_succ F.length)
+      · simp only [unsatisfiedClauseCount, hzero, if_neg, List.length_cons]
+        simpa [Nat.add_comm] using Nat.add_le_add_left ih 1
 
 /-- An assignment satisfies the formula iff its exact unsatisfied-clause count is zero. -/
 theorem formulaSatisfied_iff_unsatisfiedClauseCount_eq_zero {n : Nat}
