@@ -1,3 +1,4 @@
 import MillenniumSuite.YM_Hodge.ProblemStatement
 import MillenniumSuite.YM_Hodge.EnergyMinimization
+import MillenniumSuite.YM_Hodge.HermitianEinstein
 import MillenniumSuite.YM_Hodge.HodgeStatement
