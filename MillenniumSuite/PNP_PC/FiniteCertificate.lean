@@ -24,14 +24,14 @@ theorem chain_snoc {K : Type u} {step : K → K → Prop}
   | cons x xs ih =>
       change step a x ∧ IsPachnerChain step x xs b at hchain
       change step a x ∧ IsPachnerChain step x (xs ++ [c]) c
-      exact ⟨hchain.1, ih hchain.2 hstep⟩
+      exact ⟨hchain.1, ih hchain.2⟩
 
 /-- Every inductive Pachner-reachability proof yields an explicit finite move list. -/
 theorem reachable_has_finite_chain {K : Type u} {step : K → K → Prop}
     {a b : K} (h : PachnerReachable step a b) :
     ∃ xs : List K, IsPachnerChain step a xs b := by
   induction h with
-  | refl a =>
+  | refl =>
       exact ⟨[], rfl⟩
   | move hreach hstep ih =>
       rcases ih with ⟨xs, hxs⟩
