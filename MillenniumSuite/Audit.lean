@@ -26,6 +26,8 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 
 #print axioms MillenniumSuite.NSYM.curvature_swap
 #print axioms MillenniumSuite.NSYM.curvature_self
+#print axioms MillenniumSuite.NSYM.integrable_sq_of_memLp_two
+#print axioms MillenniumSuite.NSYM.integrable_actionDensity_of_memLp_two
 #print axioms MillenniumSuite.NSYM.correlation_implies_positive_mass_gap
 #print axioms MillenniumSuite.NSYM.dissipative_inverse_positive
 #print axioms MillenniumSuite.NSYM.kolmogorovLength_pos
@@ -42,6 +44,8 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 
 #print axioms MillenniumSuite.HodgeBSD.bounds_give_rank_equality
 #print axioms MillenniumSuite.HodgeBSD.arithmetic_bounds_give_bsd
+#print axioms MillenniumSuite.HodgeBSD.posDef_regulator_det_ne_zero
+#print axioms MillenniumSuite.HodgeBSD.weakBSDQ_of_bounds
 
 #print axioms MillenniumSuite.BSDRH.functional_equation_zero_symmetry
 #print axioms MillenniumSuite.BSDRH.zero_gives_scattering_denominator_zero
@@ -54,6 +58,11 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.BSDRH.right_riemann_zero_reflects_left
 #print axioms MillenniumSuite.BSDRH.residue_term_negative
 #print axioms MillenniumSuite.BSDRH.maass_selberg_positivity_contradiction
+#print axioms MillenniumSuite.BSDRH.residue_mechanism_of_pole_and_contour
+#print axioms MillenniumSuite.BSDRH.no_right_zero_of_pole_and_contour
+#print axioms MillenniumSuite.BSDRH.no_right_riemann_zero_of_residue_mechanism
+#print axioms MillenniumSuite.BSDRH.zeta_zero_re_le_half_of_spectral_data
+#print axioms MillenniumSuite.BSDRH.noOffCritical_iff_RH
 
 #print axioms MillenniumSuite.RHPNP.literalPenalty_eq_zero_iff
 #print axioms MillenniumSuite.RHPNP.clausePenalty_eq_zero_iff
