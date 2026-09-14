@@ -34,11 +34,10 @@ theorem he_residual_fields_vanish {V W : Type*}
     [NormedAddCommGroup V] [NormedAddCommGroup W]
     (d : HEData V W) (hE : HEEnergyIdentity d) (hmin : HEAtMinimum d) :
     d.curvature02 = 0 ∧ d.momentResidual = 0 := by
-  unfold HEEnergyIdentity HEAtMinimum at hE hmin
+  unfold HEEnergyIdentity at hE
+  unfold HEAtMinimum at hmin
   have hsum : 2 * ‖d.curvature02‖ ^ 2 + ‖d.momentResidual‖ ^ 2 = 0 := by
     nlinarith
-  have hc_nonneg : 0 ≤ ‖d.curvature02‖ := norm_nonneg _
-  have hm_nonneg : 0 ≤ ‖d.momentResidual‖ := norm_nonneg _
   have hc : ‖d.curvature02‖ = 0 := by
     nlinarith [sq_nonneg ‖d.curvature02‖, sq_nonneg ‖d.momentResidual‖]
   have hm : ‖d.momentResidual‖ = 0 := by
