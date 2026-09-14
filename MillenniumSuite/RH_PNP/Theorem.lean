@@ -23,7 +23,9 @@ namespace MillenniumSuite.RHPNP
   | nil =>
       simp [clausePenalty, ClauseSatisfied]
   | cons lit C ih =>
-      simp [clausePenalty, ClauseSatisfied, literalPenalty, ih]
+      by_cases h : Literal.eval a lit = true
+      · simp [clausePenalty, ClauseSatisfied, literalPenalty, h]
+      · simpa [clausePenalty, ClauseSatisfied, literalPenalty, h] using ih
 
 @[simp] theorem formulaPenalty_eq_zero_iff {n : Nat}
     (a : Assignment n) (F : CNF n) :
