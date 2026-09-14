@@ -24,7 +24,7 @@ def RightZeroProducesMaassSelbergData : Prop :=
 
 /-- Under the spectral residue target, no zeta zero can lie strictly right of
 `Re(s)=1/2`. -/
-theorem no_right_riemann_zero
+theorem no_right_riemann_zero_of_spectral_data
     (hspectral : RightZeroProducesMaassSelbergData) :
     ∀ rho : ℂ, riemannZeta rho = 0 → ¬ ((1 / 2 : ℝ) < rho.re) := by
   intro rho hzero hright
@@ -36,9 +36,9 @@ theorem zeta_zero_re_le_half_of_spectral_data
     (hspectral : RightZeroProducesMaassSelbergData)
     (rho : ℂ) (hzero : riemannZeta rho = 0) :
     rho.re ≤ (1 / 2 : ℝ) := by
-  exact le_of_not_gt (no_right_riemann_zero hspectral rho hzero)
+  exact le_of_not_gt (no_right_riemann_zero_of_spectral_data hspectral rho hzero)
 
-#print axioms MillenniumSuite.BSDRH.no_right_riemann_zero
+#print axioms MillenniumSuite.BSDRH.no_right_riemann_zero_of_spectral_data
 #print axioms MillenniumSuite.BSDRH.zeta_zero_re_le_half_of_spectral_data
 
 end MillenniumSuite.BSDRH
