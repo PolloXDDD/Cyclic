@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "MillenniumSuite"
+  description: >-
+    Lean 4 formalization project for the cyclic Millennium-suite manuscript,
+    organized using the statement -> explicit construction -> theorem -> axiom
+    audit discipline used by openai/NavierStokesAndEuler.
+  authors:
+    - "Kaoru Aguilera Katayama"
+  license: "Apache-2.0"
+
+sources:
+  - title: "A Cyclic Equi-Transduction of the Millennium Suite"
+    authors:
+      - "Kaoru Aguilera Katayama"
+    type: "article"
+    relationship: "formalizes"
+
+classification:
+  arxiv:
+    - "math.LO"
+    - "cs.CC"
+
+status:
+  scope: >-
+    OpenAI-style proof-engineering refactor.  The first fully closed slice is
+    the exact SAT zero-penalty encoding used inside the RH -> P=NP route.
+    The seven full transduction theorems are not marked proved until their
+    construction modules discharge them without certificates or extra axioms.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  main_results:
+    - description: "CNF satisfiability iff the explicit recursive penalty attains zero."
+      declaration: "MillenniumSuite.RHPNP.zeroPenaltyEncoding"
+      file: "MillenniumSuite/RH_PNP/Theorem.lean"
+      sorry_count: 0
+      axioms: []
+
+alignment:
+  namespaces:
+    - "MillenniumSuite.RHPNP"
+  statements:
+    - source: "RH -> P=NP section: Boolean clause-penalty zero criterion"
+      lean: "MillenniumSuite.RHPNP.zeroPenaltyEncoding"
+      module: "MillenniumSuite.RH_PNP.Theorem"
+      status: "proved"
