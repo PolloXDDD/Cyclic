@@ -31,6 +31,11 @@ def Sphere3 : Set Ambient4 := Metric.sphere (0 : Ambient4) 1
 /-- Points of the unit round 3-sphere. -/
 abbrev Sphere3Point := {x : Ambient4 // x ∈ Sphere3}
 
+/-- The ambient dimension is exactly one more than the sphere dimension; this
+is the finite-rank fact used by Mathlib's manifold instance for metric spheres. -/
+local instance sphere3FinrankFact : Fact (Module.finrank ℝ Ambient4 = 3 + 1) :=
+  ⟨by simp [Ambient4]⟩
+
 /-- Smooth three-dimensional Poincare statement used as the antecedent of the
 first transduction. The homotopy-equivalence type is written explicitly rather
 than through scoped notation so the file is parser-independent. -/
