@@ -25,10 +25,13 @@ classification:
 
 status:
   scope: >-
-    OpenAI-style proof-engineering refactor.  The first fully closed slice is
-    the exact SAT zero-penalty encoding used inside the RH -> P=NP route.
-    The seven full transduction theorems are not marked proved until their
-    construction modules discharge them without certificates or extra axioms.
+    Active source-aligned formalization of all seven nodes and all seven
+    transduction routes.  Closed local results now cover the Poincare/sphere
+    geometry and enstrophy algebra, NS->YM correlation-length endpoint,
+    YM->Hodge energy minimization, Hodge->BSD rank antisymmetry, BSD->RH zero
+    symmetry/scattering denominator, RH->P=NP SAT and complexity foundations,
+    and P=NP->PC Pachner reachability.  No full transduction is marked proved
+    until its entire construction chain is discharged.
   sorry_count: 0
   sorry_in_definitions: 0
   main_results:
@@ -37,12 +40,36 @@ status:
       file: "MillenniumSuite/RH_PNP/Theorem.lean"
       sorry_count: 0
       axioms: []
+    - description: "Topological Yang--Mills minimum forces both Hermitian--Einstein residuals to vanish."
+      declaration: "MillenniumSuite.YMHodge.minimum_forces_hermitian_einstein"
+      file: "MillenniumSuite/YM_Hodge/EnergyMinimization.lean"
+      sorry_count: 0
+      axioms: []
+    - description: "Functional equation reflects completed-zeta zeros under rho -> 1-rho."
+      declaration: "MillenniumSuite.BSDRH.functional_equation_zero_symmetry"
+      file: "MillenniumSuite/BSD_RH/Scattering.lean"
+      sorry_count: 0
+      axioms: []
 
 alignment:
   namespaces:
+    - "MillenniumSuite.PCNS"
+    - "MillenniumSuite.NSYM"
+    - "MillenniumSuite.YMHodge"
+    - "MillenniumSuite.HodgeBSD"
+    - "MillenniumSuite.BSDRH"
     - "MillenniumSuite.RHPNP"
+    - "MillenniumSuite.PNPPC"
   statements:
-    - source: "RH -> P=NP section: Boolean clause-penalty zero criterion"
+    - source: "RH -> P=NP: Boolean clause-penalty zero criterion"
       lean: "MillenniumSuite.RHPNP.zeroPenaltyEncoding"
       module: "MillenniumSuite.RH_PNP.Theorem"
+      status: "proved"
+    - source: "YM -> Hodge: Yang--Mills energy minimum residual vanishing"
+      lean: "MillenniumSuite.YMHodge.minimum_forces_hermitian_einstein"
+      module: "MillenniumSuite.YM_Hodge.EnergyMinimization"
+      status: "proved"
+    - source: "BSD -> RH: functional-equation zero symmetry"
+      lean: "MillenniumSuite.BSDRH.functional_equation_zero_symmetry"
+      module: "MillenniumSuite.BSD_RH.Scattering"
       status: "proved"
