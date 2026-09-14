@@ -25,7 +25,6 @@ noncomputable def satisfyingCount {n : Nat} (F : CNF n) : Nat :=
 theorem satisfiable_iff_satisfyingCount_pos {n : Nat} (F : CNF n) :
     Satisfiable F ↔ 0 < satisfyingCount F := by
   classical
-  rw [Nat.lt_iff_add_one_le, Nat.add_zero]
   constructor
   · rintro ⟨a, ha⟩
     unfold satisfyingCount
@@ -52,15 +51,15 @@ theorem satisfiable_iff_approximation_above_three_quarters
   · intro hsat
     have hpos : 0 < satisfyingCount F :=
       (satisfiable_iff_satisfyingCount_pos F).1 hsat
-    have hone : 1 ≤ satisfyingCount F := hpos
+    have hone : 1 ≤ satisfyingCount F := by omega
     exact positive_count_above_three_quarters hone happrox
   · intro hI
     by_contra hsat
     have hzero : satisfyingCount F = 0 :=
       (not_satisfiable_iff_satisfyingCount_eq_zero F).1 hsat
-    have hbelow : I < (1 : ℝ) / 4 := by
-      subst hzero
-      exact zero_count_below_quarter happrox
+    have happrox0 : ApproxWithinQuarter 0 I := by
+      simpa [hzero] using happrox
+    have hbelow : I < (1 : ℝ) / 4 := zero_count_below_quarter happrox0
     linarith
 
 #print axioms MillenniumSuite.RHPNP.satisfiable_iff_satisfyingCount_pos
