@@ -34,6 +34,7 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 
 #print axioms MillenniumSuite.BSDRH.functional_equation_zero_symmetry
 #print axioms MillenniumSuite.BSDRH.zero_gives_scattering_denominator_zero
+#print axioms MillenniumSuite.BSDRH.symmetric_zero_left_of_line
 
 #print axioms MillenniumSuite.RHPNP.literalPenalty_eq_zero_iff
 #print axioms MillenniumSuite.RHPNP.clausePenalty_eq_zero_iff
@@ -45,3 +46,4 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 
 #print axioms MillenniumSuite.PNPPC.PachnerReachable.trans
 #print axioms MillenniumSuite.PNPPC.extend_sphere_certificate
+#print axioms MillenniumSuite.PNPPC.sphere_recognition_inP_of_pEqualsNP
