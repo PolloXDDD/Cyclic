@@ -14,6 +14,8 @@ This module closes that real-algebraic contradiction independently of the
 spectral argument that must produce the displayed residue identity.
 -/
 
+noncomputable section
+
 namespace MillenniumSuite.BSDRH
 
 /-- Real scalar form of the residue contribution appearing in the paper. -/
