@@ -36,6 +36,9 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.YMHodge.residual_square_sum_zero
 #print axioms MillenniumSuite.YMHodge.minimum_forces_hermitian_einstein
 #print axioms MillenniumSuite.YMHodge.he_residual_fields_vanish
+#print axioms MillenniumSuite.YMHodge.rational_linear_combination_mem
+#print axioms MillenniumSuite.YMHodge.class_mem_of_eq_rational_cycle_sum
+#print axioms MillenniumSuite.YMHodge.algebraic_class_of_eq
 
 #print axioms MillenniumSuite.HodgeBSD.bounds_give_rank_equality
 #print axioms MillenniumSuite.HodgeBSD.arithmetic_bounds_give_bsd
