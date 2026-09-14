@@ -3,6 +3,6 @@ import MillenniumSuite.NS_YM
 import MillenniumSuite.YM_Hodge
 import MillenniumSuite.Hodge_BSD
 import MillenniumSuite.BSD_RH
-import MillenniumSuite.RH_PNP.Theorem
+import MillenniumSuite.RH_PNP
 import MillenniumSuite.PNP_PC
 import MillenniumSuite.Audit
