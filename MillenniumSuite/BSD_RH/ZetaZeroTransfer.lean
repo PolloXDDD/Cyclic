@@ -1,4 +1,5 @@
 import MillenniumSuite.BSD_RH.ActualZeta
+import MillenniumSuite.BSD_RH.CriticalLine
 import Mathlib.Analysis.SpecialFunctions.Gamma.Deligne
 import Mathlib.Tactic
 
@@ -16,8 +17,8 @@ theorem riemann_zero_to_completed_of_re_pos {rho : ℂ}
     intro h
     subst rho
     norm_num at hre
-  have hgamma : Gammaℝ rho ≠ 0 := Gammaℝ_ne_zero_of_re_pos hre
-  have hdiv : completedRiemannZeta rho / Gammaℝ rho = 0 := by
+  have hgamma : Complex.Gammaℝ rho ≠ 0 := Complex.Gammaℝ_ne_zero_of_re_pos hre
+  have hdiv : completedRiemannZeta rho / Complex.Gammaℝ rho = 0 := by
     rw [← riemannZeta_def_of_ne_zero hrho]
     exact hzero
   rcases (div_eq_zero_iff.mp hdiv) with hcomp | hgam
