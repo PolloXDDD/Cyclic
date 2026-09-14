@@ -1,4 +1,5 @@
 import MillenniumSuite.PNP_PC.ProblemStatement
 import MillenniumSuite.PNP_PC.Pachner
 import MillenniumSuite.PNP_PC.FiniteCertificate
+import MillenniumSuite.PNP_PC.CertificateVerifier
 import MillenniumSuite.PNP_PC.ComplexityTransfer
