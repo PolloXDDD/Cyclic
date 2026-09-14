@@ -15,7 +15,7 @@ theorem PachnerReachable.trans {K : Type u} {step : K → K → Prop}
     (hbc : PachnerReachable step b c) : PachnerReachable step a c := by
   induction hbc with
   | refl => exact hab
-  | @move _ _ d e hde hstep ih =>
+  | move hreach hstep ih =>
       exact PachnerReachable.move ih hstep
 
 /-- A certificate can be extended by one additional elementary move. -/
