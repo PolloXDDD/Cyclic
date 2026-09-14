@@ -49,6 +49,9 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.BSDRH.actual_completed_zeta_functional_equation
 #print axioms MillenniumSuite.BSDRH.actual_completed_zeta_zero_symmetry
 #print axioms MillenniumSuite.BSDRH.actual_zero_gives_scattering_denominator_zero
+#print axioms MillenniumSuite.BSDRH.riemann_zero_to_completed_of_re_pos
+#print axioms MillenniumSuite.BSDRH.right_riemann_zero_gives_actual_scattering_denominator_zero
+#print axioms MillenniumSuite.BSDRH.right_riemann_zero_reflects_left
 #print axioms MillenniumSuite.BSDRH.residue_term_negative
 #print axioms MillenniumSuite.BSDRH.maass_selberg_positivity_contradiction
 
