@@ -1,4 +1,4 @@
-import Mathlib.LinearAlgebra.Basic
+import Mathlib
 
 /-!
 # Rational closure of algebraic cycle classes
