@@ -44,6 +44,7 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 
 #print axioms MillenniumSuite.HodgeBSD.bounds_give_rank_equality
 #print axioms MillenniumSuite.HodgeBSD.arithmetic_bounds_give_bsd
+#print axioms MillenniumSuite.HodgeBSD.posDef_regulator_det_pos
 #print axioms MillenniumSuite.HodgeBSD.posDef_regulator_det_ne_zero
 #print axioms MillenniumSuite.HodgeBSD.weakBSDQ_of_bounds
 
