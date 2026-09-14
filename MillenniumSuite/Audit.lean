@@ -59,4 +59,5 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 
 #print axioms MillenniumSuite.PNPPC.PachnerReachable.trans
 #print axioms MillenniumSuite.PNPPC.extend_sphere_certificate
+#print axioms MillenniumSuite.PNPPC.reachable_iff_exists_finite_chain
 #print axioms MillenniumSuite.PNPPC.sphere_recognition_inP_of_pEqualsNP
