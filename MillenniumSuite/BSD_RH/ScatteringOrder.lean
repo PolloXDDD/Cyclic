@@ -91,7 +91,8 @@ theorem actual_scattering_numerator_meromorphicAt (s : ℂ) :
   have hcomp : MeromorphicAt
       (completedRiemannZeta ∘ (fun z : ℂ => 2 * z - 1)) s :=
     hbase.comp_analyticAt (g := fun z : ℂ => 2 * z - 1) haff
-  simpa [scatteringNumerator, Function.comp_def] using hcomp
+  change MeromorphicAt (fun z : ℂ => completedRiemannZeta (2 * z - 1)) s
+  exact hcomp
 
 /-- Consequently the actual scattering denominator is meromorphic everywhere. -/
 theorem actual_scattering_denominator_meromorphicAt (s : ℂ) :
@@ -102,7 +103,8 @@ theorem actual_scattering_denominator_meromorphicAt (s : ℂ) :
   have hcomp : MeromorphicAt
       (completedRiemannZeta ∘ (fun z : ℂ => 2 * z)) s :=
     hbase.comp_analyticAt (g := fun z : ℂ => 2 * z) haff
-  simpa [scatteringDenominatorFun, Function.comp_def] using hcomp
+  change MeromorphicAt (fun z : ℂ => completedRiemannZeta (2 * z)) s
+  exact hcomp
 
 /-- Exact local order data still needed at a candidate zero `rho` to obtain a
 simple scattering pole at `rho/2`.  This is deliberately a definition, not an
