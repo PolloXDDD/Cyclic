@@ -2,3 +2,4 @@ import MillenniumSuite.Hodge_BSD.ProblemStatement
 import MillenniumSuite.Hodge_BSD.RankEquality
 import MillenniumSuite.Hodge_BSD.ArithmeticStatement
 import MillenniumSuite.Hodge_BSD.ArithmeticBounds
+import MillenniumSuite.Hodge_BSD.Regulator
