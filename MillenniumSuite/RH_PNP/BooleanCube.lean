@@ -64,10 +64,7 @@ theorem assignmentToSymmetricCube_symmetricCubeToAssignment {n : Nat}
   funext i
   rcases z.property i with hi | hi
   · simp [assignmentToSymmetricCube, symmetricCubeToAssignment, hi]
-  · have hne : z.1 i ≠ 1 := by
-      rw [hi]
-      norm_num
-    simp [assignmentToSymmetricCube, symmetricCubeToAssignment, hne, hi]
+  · simp [assignmentToSymmetricCube, symmetricCubeToAssignment, hi]
 
 /-- Exact finite equivalence between `{0,1}^n` and `{-1,1}^n`. -/
 def assignmentSymmetricCubeEquiv (n : Nat) :
