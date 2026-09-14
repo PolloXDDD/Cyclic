@@ -24,11 +24,14 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.PCNS.cubic_absorbed_by_ricci
 #print axioms MillenniumSuite.PCNS.enstrophy_differential_bound_under_curvature_threshold
 
+#print axioms MillenniumSuite.NSYM.curvature_swap
+#print axioms MillenniumSuite.NSYM.curvature_self
 #print axioms MillenniumSuite.NSYM.correlation_implies_positive_mass_gap
 #print axioms MillenniumSuite.NSYM.dissipative_inverse_positive
 
 #print axioms MillenniumSuite.YMHodge.residual_square_sum_zero
 #print axioms MillenniumSuite.YMHodge.minimum_forces_hermitian_einstein
+#print axioms MillenniumSuite.YMHodge.he_residual_fields_vanish
 
 #print axioms MillenniumSuite.HodgeBSD.bounds_give_rank_equality
 
