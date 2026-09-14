@@ -74,6 +74,9 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.RHPNP.formulaPenalty_eq_unsatisfiedClauseCount
 #print axioms MillenniumSuite.RHPNP.unsatisfiedClauseCount_le_length
 #print axioms MillenniumSuite.RHPNP.formulaSatisfied_iff_unsatisfiedClauseCount_eq_zero
+#print axioms MillenniumSuite.RHPNP.boolToSign_injective
+#print axioms MillenniumSuite.RHPNP.symmetricCubeToAssignment_assignmentToSymmetricCube
+#print axioms MillenniumSuite.RHPNP.assignmentToSymmetricCube_symmetricCubeToAssignment
 #print axioms MillenniumSuite.RHPNP.p_subset_np
 #print axioms MillenniumSuite.RHPNP.pEqualsNP_iff_np_subset_p
 #print axioms MillenniumSuite.RHPNP.gueKernel_zero
