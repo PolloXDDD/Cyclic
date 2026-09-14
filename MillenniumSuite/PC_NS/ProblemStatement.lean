@@ -25,8 +25,10 @@ abbrev Ambient4 := EuclideanSpace ℝ (Fin 4)
 /-- The Euclidean three-space used as the local model for 3-manifolds. -/
 abbrev Model3 := EuclideanSpace ℝ (Fin 3)
 
-/-- The unit round 3-sphere, matching the geometric normal form used in the paper. -/
-def Sphere3 : Set Ambient4 := Metric.sphere (0 : Ambient4) 1
+/-- The unit round 3-sphere, matching the geometric normal form used in the paper.
+This is an abbreviation so Mathlib's sphere manifold instances can see the
+underlying `Metric.sphere` during typeclass synthesis. -/
+abbrev Sphere3 : Set Ambient4 := Metric.sphere (0 : Ambient4) 1
 
 /-- Points of the unit round 3-sphere. -/
 abbrev Sphere3Point := {x : Ambient4 // x ∈ Sphere3}
