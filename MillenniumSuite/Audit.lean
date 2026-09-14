@@ -3,7 +3,7 @@ import MillenniumSuite.NS_YM
 import MillenniumSuite.YM_Hodge
 import MillenniumSuite.Hodge_BSD
 import MillenniumSuite.BSD_RH
-import MillenniumSuite.RH_PNP.Theorem
+import MillenniumSuite.RH_PNP
 import MillenniumSuite.PNP_PC
 
 /-!
@@ -40,6 +40,8 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.RHPNP.formulaPenalty_eq_zero_iff
 #print axioms MillenniumSuite.RHPNP.satisfiable_iff_exists_zero_penalty
 #print axioms MillenniumSuite.RHPNP.zeroPenaltyEncoding
+#print axioms MillenniumSuite.RHPNP.p_subset_np
+#print axioms MillenniumSuite.RHPNP.pEqualsNP_iff_np_subset_p
 
 #print axioms MillenniumSuite.PNPPC.PachnerReachable.trans
 #print axioms MillenniumSuite.PNPPC.extend_sphere_certificate
