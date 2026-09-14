@@ -3,3 +3,4 @@ import MillenniumSuite.YM_Hodge.EnergyMinimization
 import MillenniumSuite.YM_Hodge.HermitianEinstein
 import MillenniumSuite.YM_Hodge.CycleClosure
 import MillenniumSuite.YM_Hodge.HodgeStatement
+import MillenniumSuite.YM_Hodge.ClassEquality
