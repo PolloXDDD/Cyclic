@@ -28,12 +28,17 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.NSYM.curvature_self
 #print axioms MillenniumSuite.NSYM.correlation_implies_positive_mass_gap
 #print axioms MillenniumSuite.NSYM.dissipative_inverse_positive
+#print axioms MillenniumSuite.NSYM.kolmogorovLength_pos
+#print axioms MillenniumSuite.NSYM.kolmogorovLength_inv_pos
+#print axioms MillenniumSuite.NSYM.correlationHypotheses_from_kolmogorov
+#print axioms MillenniumSuite.NSYM.positive_mass_gap_from_kolmogorov_control
 
 #print axioms MillenniumSuite.YMHodge.residual_square_sum_zero
 #print axioms MillenniumSuite.YMHodge.minimum_forces_hermitian_einstein
 #print axioms MillenniumSuite.YMHodge.he_residual_fields_vanish
 
 #print axioms MillenniumSuite.HodgeBSD.bounds_give_rank_equality
+#print axioms MillenniumSuite.HodgeBSD.arithmetic_bounds_give_bsd
 
 #print axioms MillenniumSuite.BSDRH.functional_equation_zero_symmetry
 #print axioms MillenniumSuite.BSDRH.zero_gives_scattering_denominator_zero
