@@ -20,8 +20,9 @@ theorem zero_count_below_quarter {I : ℝ}
     (h : ApproxWithinQuarter 0 I) :
     I < (1 : ℝ) / 4 := by
   unfold ApproxWithinQuarter at h
-  have hleft : -(1 : ℝ) / 4 < (0 : ℝ) - I := (abs_lt.mp h).1
-  linarith
+  have h' : |I| < (1 : ℝ) / 4 := by
+    simpa only [Nat.cast_zero, zero_sub, abs_neg] using h
+  exact (abs_lt.mp h').2
 
 /-- If the exact count is positive, every quarter-accurate approximation lies above `3/4`. -/
 theorem positive_count_above_three_quarters {count : ℕ} {I : ℝ}
