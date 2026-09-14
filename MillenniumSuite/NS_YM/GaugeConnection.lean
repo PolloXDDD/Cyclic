@@ -10,8 +10,6 @@ algebras are instances of this setup.
 
 noncomputable section
 
-open scoped BigOperators
-
 namespace MillenniumSuite.NSYM
 
 abbrev Space4 := EuclideanSpace ℝ (Fin 4)
@@ -61,11 +59,9 @@ theorem curvature_swap {A : Type*}
     [NormedRing A] [NormedAlgebra ℝ A]
     (conn : Connection A) (mu : Fin 4) (x : Space4) :
     curvature conn mu mu x = 0 := by
-  rw [curvature_swap conn mu mu x]
-  have h : curvature conn mu mu x + curvature conn mu mu x = 0 := by
-    exact add_eq_zero_iff_eq_neg.mpr rfl
-  linarith
+  simp [curvature, commutator]
 
 #print axioms MillenniumSuite.NSYM.curvature_swap
+#print axioms MillenniumSuite.NSYM.curvature_self
 
 end MillenniumSuite.NSYM
