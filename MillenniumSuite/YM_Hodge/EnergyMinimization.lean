@@ -6,7 +6,8 @@ namespace MillenniumSuite.YMHodge
 theorem residual_square_sum_zero {d : EnergyData}
     (hE : EnergyIdentity d) (hmin : AtTopologicalMinimum d) :
     2 * d.residual02 ^ 2 + d.residualHE ^ 2 = 0 := by
-  unfold EnergyIdentity AtTopologicalMinimum at hE hmin
+  unfold EnergyIdentity at hE
+  unfold AtTopologicalMinimum at hmin
   nlinarith
 
 /-- The manuscript's Hermitian--Einstein conclusion follows algebraically from
