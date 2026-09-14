@@ -17,11 +17,13 @@ theorem chain_snoc {K : Type u} {step : K → K → Prop}
     IsPachnerChain step a (xs ++ [c]) c := by
   induction xs generalizing a with
   | nil =>
-      simp [IsPachnerChain] at hchain ⊢
+      change a = b at hchain
       subst b
+      change step a c ∧ c = c
       exact ⟨hstep, rfl⟩
   | cons x xs ih =>
-      simp [IsPachnerChain] at hchain ⊢
+      change step a x ∧ IsPachnerChain step x xs b at hchain
+      change step a x ∧ IsPachnerChain step x (xs ++ [c]) c
       exact ⟨hchain.1, ih hchain.2 hstep⟩
 
 /-- Every inductive Pachner-reachability proof yields an explicit finite move list. -/
@@ -42,11 +44,11 @@ theorem finite_chain_reachable {K : Type u} {step : K → K → Prop}
     PachnerReachable step a b := by
   induction xs generalizing a with
   | nil =>
-      simp [IsPachnerChain] at hchain
+      change a = b at hchain
       subst b
       exact PachnerReachable.refl a
   | cons c cs ih =>
-      simp [IsPachnerChain] at hchain
+      change step a c ∧ IsPachnerChain step c cs b at hchain
       exact (reachable_of_step hchain.1).trans (ih hchain.2)
 
 /-- Reachability is exactly existence of a finite certificate chain. -/
