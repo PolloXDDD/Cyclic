@@ -76,10 +76,11 @@ theorem actual_completed_zeta_meromorphicAt (s : ℂ) :
   have hdivOneSub : MeromorphicAt (fun z : ℂ => 1 / (1 - z)) s := by
     fun_prop
   have hrhs : MeromorphicAt
-      (fun z : ℂ => completedRiemannZeta₀ z - 1 / z - 1 / (1 - z)) s := by
-    simpa only [Pi.sub_apply] using (h0.sub hdivId).sub hdivOneSub
-  exact hrhs.congr <| Filter.Eventually.of_forall fun z =>
-    (completedRiemannZeta_eq z).symm
+      ((completedRiemannZeta₀ - (fun z : ℂ => 1 / z)) - (fun z : ℂ => 1 / (1 - z))) s :=
+    (h0.sub hdivId).sub hdivOneSub
+  refine hrhs.congr ?_
+  filter_upwards with z
+  simpa only [Pi.sub_apply] using (completedRiemannZeta_eq z).symm
 
 /-- Consequently the actual scattering numerator is meromorphic everywhere. -/
 theorem actual_scattering_numerator_meromorphicAt (s : ℂ) :
@@ -87,7 +88,10 @@ theorem actual_scattering_numerator_meromorphicAt (s : ℂ) :
   have hbase := actual_completed_zeta_meromorphicAt (2 * s - 1)
   have haff : AnalyticAt ℂ (fun z : ℂ => 2 * z - 1) s := by
     fun_prop
-  simpa [scatteringNumerator, Function.comp_def] using hbase.comp_analyticAt haff
+  have hcomp : MeromorphicAt
+      (completedRiemannZeta ∘ (fun z : ℂ => 2 * z - 1)) s :=
+    hbase.comp_analyticAt (g := fun z : ℂ => 2 * z - 1) haff
+  simpa [scatteringNumerator, Function.comp_def] using hcomp
 
 /-- Consequently the actual scattering denominator is meromorphic everywhere. -/
 theorem actual_scattering_denominator_meromorphicAt (s : ℂ) :
@@ -95,7 +99,10 @@ theorem actual_scattering_denominator_meromorphicAt (s : ℂ) :
   have hbase := actual_completed_zeta_meromorphicAt (2 * s)
   have haff : AnalyticAt ℂ (fun z : ℂ => 2 * z) s := by
     fun_prop
-  simpa [scatteringDenominatorFun, Function.comp_def] using hbase.comp_analyticAt haff
+  have hcomp : MeromorphicAt
+      (completedRiemannZeta ∘ (fun z : ℂ => 2 * z)) s :=
+    hbase.comp_analyticAt (g := fun z : ℂ => 2 * z) haff
+  simpa [scatteringDenominatorFun, Function.comp_def] using hcomp
 
 /-- Exact local order data still needed at a candidate zero `rho` to obtain a
 simple scattering pole at `rho/2`.  This is deliberately a definition, not an
