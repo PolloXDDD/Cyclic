@@ -31,6 +31,13 @@ def scatteringDenominatorFun (xi : CompletedZeta) : ℂ → ℂ :=
 @[simp] theorem scatteringDenominatorFun_apply (xi : CompletedZeta) (s : ℂ) :
     scatteringDenominatorFun xi s = scatteringDenominator xi s := rfl
 
+/-- The pointwise scattering quotient is exactly the quotient of its numerator
+and denominator functions. -/
+theorem scattering_eq_fun_div (xi : CompletedZeta) :
+    scattering xi = scatteringNumerator xi / scatteringDenominatorFun xi := by
+  funext s
+  rfl
+
 /-- The meromorphic order of the scattering quotient is the numerator order
 minus the denominator order.  This is a direct specialization of Mathlib's
 `meromorphicOrderAt_div`. -/
@@ -41,8 +48,8 @@ theorem scattering_order_eq_sub
     meromorphicOrderAt (scattering xi) s =
       meromorphicOrderAt (scatteringNumerator xi) s -
         meromorphicOrderAt (scatteringDenominatorFun xi) s := by
-  simpa [scattering, scatteringNumerator, scatteringDenominatorFun] using
-    (meromorphicOrderAt_div hnum hden)
+  rw [scattering_eq_fun_div xi]
+  exact meromorphicOrderAt_div hnum hden
 
 /-- A regular nonvanishing numerator (order zero) divided by a simple zero of
 the denominator (order one) has order `-1`.  In meromorphic language this is a
@@ -57,12 +64,51 @@ theorem scattering_order_eq_neg_one_of_orders
   rw [scattering_order_eq_sub xi s hnum hden, hnumOrder, hdenOrder]
   norm_num
 
+/-- Mathlib's actual completed Riemann zeta is meromorphic at every complex
+point.  We obtain this from its decomposition into the entire corrected
+completed zeta plus the two rational polar terms. -/
+theorem actual_completed_zeta_meromorphicAt (s : ℂ) :
+    MeromorphicAt completedRiemannZeta s := by
+  have h0 : MeromorphicAt completedRiemannZeta₀ s :=
+    (differentiable_completedZeta₀.analyticAt s).meromorphicAt
+  have hdivId : MeromorphicAt (fun z : ℂ => 1 / z) s := by
+    fun_prop
+  have hdivOneSub : MeromorphicAt (fun z : ℂ => 1 / (1 - z)) s := by
+    fun_prop
+  have hrhs : MeromorphicAt
+      (fun z : ℂ => completedRiemannZeta₀ z - 1 / z - 1 / (1 - z)) s := by
+    simpa only [Pi.sub_apply] using (h0.sub hdivId).sub hdivOneSub
+  exact hrhs.congr <| Filter.Eventually.of_forall fun z =>
+    (completedRiemannZeta_eq z).symm
+
+/-- Consequently the actual scattering numerator is meromorphic everywhere. -/
+theorem actual_scattering_numerator_meromorphicAt (s : ℂ) :
+    MeromorphicAt (scatteringNumerator completedRiemannZeta) s := by
+  have hbase := actual_completed_zeta_meromorphicAt (2 * s - 1)
+  have haff : AnalyticAt ℂ (fun z : ℂ => 2 * z - 1) s := by
+    fun_prop
+  simpa [scatteringNumerator, Function.comp_def] using hbase.comp_analyticAt haff
+
+/-- Consequently the actual scattering denominator is meromorphic everywhere. -/
+theorem actual_scattering_denominator_meromorphicAt (s : ℂ) :
+    MeromorphicAt (scatteringDenominatorFun completedRiemannZeta) s := by
+  have hbase := actual_completed_zeta_meromorphicAt (2 * s)
+  have haff : AnalyticAt ℂ (fun z : ℂ => 2 * z) s := by
+    fun_prop
+  simpa [scatteringDenominatorFun, Function.comp_def] using hbase.comp_analyticAt haff
+
 /-- Exact local order data still needed at a candidate zero `rho` to obtain a
 simple scattering pole at `rho/2`.  This is deliberately a definition, not an
 asserted theorem. -/
 def SimpleScatteringOrderData (rho : ℂ) : Prop :=
   MeromorphicAt (scatteringNumerator completedRiemannZeta) (rho / 2) ∧
   MeromorphicAt (scatteringDenominatorFun completedRiemannZeta) (rho / 2) ∧
+  meromorphicOrderAt (scatteringNumerator completedRiemannZeta) (rho / 2) = 0 ∧
+  meromorphicOrderAt (scatteringDenominatorFun completedRiemannZeta) (rho / 2) = 1
+
+/-- Since meromorphicity is now proved unconditionally, the remaining local
+input can be reduced to the two multiplicity statements alone. -/
+def SimpleScatteringMultiplicityData (rho : ℂ) : Prop :=
   meromorphicOrderAt (scatteringNumerator completedRiemannZeta) (rho / 2) = 0 ∧
   meromorphicOrderAt (scatteringDenominatorFun completedRiemannZeta) (rho / 2) = 1
 
@@ -76,8 +122,25 @@ theorem actual_scattering_simple_pole_of_order_data
   exact scattering_order_eq_neg_one_of_orders completedRiemannZeta (rho / 2)
     hnum hden hnumOrder hdenOrder
 
+/-- After proving global meromorphicity, multiplicity data alone produce the
+simple scattering pole. -/
+theorem actual_scattering_simple_pole_of_multiplicity_data
+    (rho : ℂ) (h : SimpleScatteringMultiplicityData rho) :
+    meromorphicOrderAt (scattering completedRiemannZeta) (rho / 2) =
+      ((-1 : ℤ) : WithTop ℤ) := by
+  rcases h with ⟨hnumOrder, hdenOrder⟩
+  exact scattering_order_eq_neg_one_of_orders completedRiemannZeta (rho / 2)
+    (actual_scattering_numerator_meromorphicAt (rho / 2))
+    (actual_scattering_denominator_meromorphicAt (rho / 2))
+    hnumOrder hdenOrder
+
+#print axioms MillenniumSuite.BSDRH.scattering_eq_fun_div
 #print axioms MillenniumSuite.BSDRH.scattering_order_eq_sub
 #print axioms MillenniumSuite.BSDRH.scattering_order_eq_neg_one_of_orders
+#print axioms MillenniumSuite.BSDRH.actual_completed_zeta_meromorphicAt
+#print axioms MillenniumSuite.BSDRH.actual_scattering_numerator_meromorphicAt
+#print axioms MillenniumSuite.BSDRH.actual_scattering_denominator_meromorphicAt
 #print axioms MillenniumSuite.BSDRH.actual_scattering_simple_pole_of_order_data
+#print axioms MillenniumSuite.BSDRH.actual_scattering_simple_pole_of_multiplicity_data
 
 end MillenniumSuite.BSDRH
