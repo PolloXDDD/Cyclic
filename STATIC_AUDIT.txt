@@ -1,0 +1,18 @@
+Static source audit for MillenniumSuite
+=======================================
+
+Policy:
+- no project declarations beginning with `axiom`
+- no project declarations beginning with `constant`
+- no `sorry`
+- no `admit`
+- no proof-carrying `Certificate` identifier in Lean sources
+
+Result at generation time:
+- forbidden declaration scan: CLEAN
+- Certificate identifier scan: CLEAN
+
+Kernel build status:
+- not executed in this container because Lean/Lake are not preinstalled
+- `.github/workflows/lean.yml` and `scripts/audit.sh` are included so the exact
+  pinned toolchain can build the project in CI
