@@ -62,9 +62,16 @@ As in `openai/NavierStokesAndEuler`, exported closed lemmas are inspected with
 #print axioms MillenniumSuite.RHPNP.zeroPenaltyEncoding
 #print axioms MillenniumSuite.RHPNP.p_subset_np
 #print axioms MillenniumSuite.RHPNP.pEqualsNP_iff_np_subset_p
+#print axioms MillenniumSuite.RHPNP.gueKernel_zero
+#print axioms MillenniumSuite.RHPNP.gueKernel_nonneg
+#print axioms MillenniumSuite.RHPNP.gueKernel_le_one
+#print axioms MillenniumSuite.RHPNP.continuous_gueKernel
 #print axioms MillenniumSuite.RHPNP.zero_count_below_quarter
 #print axioms MillenniumSuite.RHPNP.positive_count_above_three_quarters
 #print axioms MillenniumSuite.RHPNP.quarter_gap_separates_counts
+#print axioms MillenniumSuite.RHPNP.satisfiable_iff_satisfyingCount_pos
+#print axioms MillenniumSuite.RHPNP.not_satisfiable_iff_satisfyingCount_eq_zero
+#print axioms MillenniumSuite.RHPNP.satisfiable_iff_approximation_above_three_quarters
 
 #print axioms MillenniumSuite.PNPPC.PachnerReachable.trans
 #print axioms MillenniumSuite.PNPPC.extend_sphere_certificate
