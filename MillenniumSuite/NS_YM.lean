@@ -2,4 +2,5 @@ import MillenniumSuite.NS_YM.ProblemStatement
 import MillenniumSuite.NS_YM.GaugeConnection
 import MillenniumSuite.NS_YM.CorrelationLength
 import MillenniumSuite.NS_YM.KolmogorovLength
+import MillenniumSuite.NS_YM.FiniteAction
 import MillenniumSuite.NS_YM.YangMillsStatement
