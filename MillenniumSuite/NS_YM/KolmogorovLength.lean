@@ -1,6 +1,8 @@
 import MillenniumSuite.NS_YM.CorrelationLength
 import Mathlib.Analysis.SpecialFunctions.Pow.Real
 
+noncomputable section
+
 namespace MillenniumSuite.NSYM
 
 /-- Kolmogorov dissipative length `eta = (nu^3 / epsilon)^(1/4)`. -/
