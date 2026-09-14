@@ -4,11 +4,14 @@ universe u
 
 namespace MillenniumSuite.PNPPC
 
-/-- Boolean checker for a concrete Pachner chain when elementary moves are decidable. -/
+/-- Boolean checker for a concrete Pachner chain when elementary moves are decidable.
+The recursion mirrors `IsPachnerChain` exactly. -/
 def verifyPachnerChain {K : Type u}
-    [DecidableEq K] {step : K → K → Prop} [DecidableRel step]
-    (a : K) (xs : List K) (b : K) : Bool :=
-  decide (IsPachnerChain step a xs b)
+    [DecidableEq K] {step : K → K → Prop} [DecidableRel step] :
+    K → List K → K → Bool
+  | a, [], b => decide (a = b)
+  | a, c :: cs, b =>
+      decide (step a c) && verifyPachnerChain (step := step) c cs b
 
 /-- The Boolean checker is logically exact. -/
 @[simp] theorem verifyPachnerChain_eq_true_iff {K : Type u}
@@ -16,7 +19,11 @@ def verifyPachnerChain {K : Type u}
     (a : K) (xs : List K) (b : K) :
     verifyPachnerChain (step := step) a xs b = true ↔
       IsPachnerChain step a xs b := by
-  simp [verifyPachnerChain]
+  induction xs generalizing a with
+  | nil =>
+      simp [verifyPachnerChain, IsPachnerChain]
+  | cons c cs ih =>
+      simp [verifyPachnerChain, IsPachnerChain, ih]
 
 /-- Sphere-certificate checker with the target standard triangulation fixed. -/
 def verifySphereCertificate {K : Type u}
