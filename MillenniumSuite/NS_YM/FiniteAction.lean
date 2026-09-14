@@ -40,7 +40,8 @@ theorem integrable_actionDensity_of_memLp_two
     Integrable (actionDensity g F) mu := by
   have hsq : Integrable (fun x => F x ^ 2) mu :=
     integrable_sq_of_memLp_two hmeas hL2
-  simpa [actionDensity] using hsq.const_mul (1 / (4 * g ^ 2))
+  change Integrable (fun x => (1 / (4 * g ^ 2)) * F x ^ 2) mu
+  exact hsq.const_mul (1 / (4 * g ^ 2))
 
 /-- The corresponding Euclidean action is an ordinary finite real integral. -/
 def yangMillsAction
